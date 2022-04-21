@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% if user.is_authenticated %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Caixa Angola | Enviar Ficheiros</title>
+  <link href="{% static 'main/estilos.css' %}" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container">
+    <div class="header" style="background-color: #0A72D1;">
+      <h1 style="text-align: center;" id="texto">Enviar Ficheiros</h1>
+    </div>
+    <div class="main">
+      <h3 style="text-align: left;">Submissão de Ficheiros</h3> <br><br>
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="upload" multiple> <br><br>
+        <button type="submit">Submeter</button>
+      </form>
+    </div>
+  </div>
+  <h2 class="my-4">File</h2>
+          <div class="row">
+        {% if file_url %}
+            <div class="col-lg-4 col-md-6 col-sm-12 pb-4">
+              <p>Uploaded to:<a href="{{ file_url }}">{{ file_url }}</a></p>
+        {% else %}
+            <p>No files uploaded.</p>
+        {% endif %}
+          </div>
+  <a href="indexGestor" class="button2">Voltar</a>
+</body>
+
+</html>
+{% endif %}
+{% endblock %}

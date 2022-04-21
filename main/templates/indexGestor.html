@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% if user.is_authenticated %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Caixa Angola | Gestor de Projetos</title>
+<style>
+    body{
+    background-image: url({% static 'main/images/mountain.jpg' %});
+    min-height: 800px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    }
+</style>
+<link href="{% static 'main/estilos.css' %}" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="main">
+            <nav>
+                <figure><img src="{% static 'main/images/caixaAngola.png' %}" style="text-align: left;"></figure>
+                <br><br><br><br><br><br><br><br><br><br><br>
+                <a href="sendFiles" class="button2">Enviar Ficheiros</a>
+                <a href="notasGestor" class="button2">Notas</a>
+                <br>
+            </nav>
+        
+        </div>
+      </div>
+</body>
+</html>
+{% endif %}
+{% endblock %}
