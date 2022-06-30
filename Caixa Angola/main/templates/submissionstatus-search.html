@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <!DOCTYPE html>
+  <html>
+
+  <head>
+    <title>Estado das Submissões | Caixa Angola</title>
+    <link href="{% static 'images/CGDICON.png' %}" type="image/x-icon" rel="shortcut icon">
+    <style>
+      .header {height: 150px;}
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="header" style="background-color: #0A72D1;">
+        <h1 style="text-align: center; color: white;" id="texto">Estado das Submissões</h1>
+      </div>
+      <div class="shadow p-4 mb-5 bg-body rounded">
+      <div class="main">
+        <form style="text-align: right;" method="POST" action="{% url 'submission_status_search' %}">
+            {% csrf_token %}
+            <input type="search" name="searched" placeholder="ID/Nome">
+            <button type="submit">Pesquisar</button>
+          </form>
+        {% if searched %}
+            <h1>Resultados para "{{ searched }}"</h1>
+            </br>
+            {% for submission in submissions %}
+            <div class="card">
+                {% if submission.submissions %}
+                {% endif %}
+                <div class="card-header">
+                    {{ submission.nome }}
+                </div>
+                <div class="card-body">
+                    <b>ID: </b>{{ submission.id_number }}
+                    <br/>
+                    <b>Data de submissão: </b>{{ submission.date }}
+                    <br/>
+                    <b>Departamento: </b>{{ submission.departamento }}
+                    <!--<br/>
+                    <b>Data de aprovação: </b>{{ submission.data }}
+                    -->
+                    <br/>
+                </div>
+                <div class="card-footer text-muted">
+                  <b>Estado: </b>{{ submission.state }}
+                </div>
+                </div>
+                </br>
+                {% endfor %}
+                
+            {% else %}
+                <h1>Erro na pesquisa</h1>
+                <br/>
+            {% endif %}
+                  </div>
+                  <a href="SubmissionStatus" class="btn btn-primary">Voltar</a>
+                </div>
+              </div>
+  </body>
+
+  </html>
+{% endblock %}

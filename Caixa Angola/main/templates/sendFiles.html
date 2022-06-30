@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% if user.is_authenticated %}
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Enviar ficheiros | Caixa Angola</title>
+        <link href="{% static 'main/estilos.css' %}" rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="header" style="background-color: #0A72D1;">
+                <h1 style="text-align: center;" id="texto">Enviar ficheiros</h1>
+            </div>
+            <div class="main">
+<div class="shadow p-4 mb-5 bg-body rounded">
+        <form enctype='multipart/form-data' action="" method=POST>
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <input type="submit" value="Submeter" class="btn btn-primary">
+            <a href="indexGestor" class="btn btn-secondary">Voltar</a>
+        </form>
+        </div>
+<br/><br/>	
+</div>
+</body>
+
+</html>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<title>Registrar-se | Caixa Angola</title>
+<!--<style>
+    #logo { display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;}
+</style>
+<img id='logo' src="{% static 'main/images/caixaAngola.png' %}" title="caixaAngola" style="float: none;">-->
+<style>
+    .all {
+      max-width: 64rem;
+      margin: auto;
+    }
+  </style>
+<div class="all">
+    {% if form.errors %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                Ocorreu um erro com o formulário.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endif %}
+
+        <div class="shadow p-4 mb-5 bg-body rounded">
+        <h1>Registrar-se</h1>
+        <br/>
+            <form action="{% url 'register' %}" method=POST>
+                {% csrf_token %}
+                {{ form.as_p }}
+
+            <form>
+            <br/>
+    
+                <input type="submit" value="Próxima" class="btn btn-primary">
+            </form>
+        <br/><br/>
+        </div>
+</div>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <!DOCTYPE html>
+  <html>
+
+  <head>
+    <title>Estados | Caixa Angola</title>
+    <link href="{% static 'images/CGDICON.png' %}" type="image/x-icon" rel="shortcut icon">
+    <style>
+      .header {height: 150px;}
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="header" style="background-color: #0A72D1;">
+        <h1 style="text-align: center; color: white;" id="texto">Estados</h1>
+      </div>
+      <div class="shadow p-4 mb-5 bg-body rounded">
+      <div class="main">
+        <form style="text-align: right;" method="POST" action="{% url 'status_search' %}">
+          {% csrf_token %}
+          <input type="search" name="searchedss" placeholder="ID/Nome">
+          <button type="submit">Pesquisar</button>
+        </form>
+      </br>
+        {% for oportunidade in oportunidade_list %}
+                    <div class="card">
+                        {% if oportunidade.oportunidades %}
+                        {% endif %}
+                        <div class="card-header">
+                            {{ oportunidade.nome }}
+                        </div>
+                        <div class="card-body">
+                            <b>ID: </b>{{ oportunidade.id_number }}
+                            <br/>
+                            <b>Data de submissão: </b>{{ oportunidade.date }}
+                            <br/>
+                            <b>Departamento: </b>{{ oportunidade.departamento }}
+                            <!--
+                            <br/>
+                            <b>Data de aprovação: </b>{{ oportunidade.data }}
+                            -->
+                            <br/>
+                            <b>Estado: </b>{{ oportunidade.state }}
+                        </div>
+                        <div class="card-footer text-muted">
+                            <a href="{% url 'status_oportunidade' oportunidade.id %}" class="btn btn-primary">Alterar estado</a>
+                        </div>
+                    </div>
+                    </br>
+                    {% endfor %}
+                  </div>
+                  <a href="indexPMO" class="btn btn-secondary">Voltar</a>
+                </div>
+              </div>
+  </body>
+
+  </html>
+{% endblock %}

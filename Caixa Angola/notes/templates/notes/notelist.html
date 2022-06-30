@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if user.is_authenticated %}
+<!DOCTYPE html>
+
+<head>
+    <title>Notas | Caixa Social</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        #titulo {
+            color:white;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-dark" style="background-color: #0A72D1;">
+        <a class="navbar-brand" href="#">
+                Notas
+        </a>
+    </nav>
+    <nav class="navbar navbar-dark" style="background-color: white;">
+        <a id='titulo'class="navbar-brand">
+                Notas
+        </a>
+
+        <a href="{% url 'addnote' %}" class="navbar-link btn-lg" style="background-color:#6c757d;color: white;">
+            Adicionar</a>
+    </nav>
+    <br>
+    <div class="card-columns">
+        {% for note in notes %}
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{ note.Título }}</h5>
+                <p class="card-text">{{ note.Descrição }}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                        <a href="Edit/{{note.id}}" class="btn btn-sm btn-outline-secondary" id= '{{note.id}}'>Editar</a>
+                        <a href="Delete/{{note.id}}" class="btn btn-sm btn-outline-secondary" id= '{{note.id}}'>Deletar</a>
+                    </div>
+                </div>
+                    <small class="text-muted">{{note.Data}}</small>
+                </div>
+        </div>    
+        {% endfor %}
+    </div>
+
+</br>
+<a href="/" class="btn btn-primary">Voltar</a>
+
+</body>
+
+</html>
+{% endif %}
+{% endblock %}

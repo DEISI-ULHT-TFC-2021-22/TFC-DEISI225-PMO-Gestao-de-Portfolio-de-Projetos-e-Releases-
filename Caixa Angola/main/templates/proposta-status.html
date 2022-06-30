@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+    <html>
+
+        <head>
+            <title>Alterar estado | Caixa Angola</title>
+            <link href="{% static 'main/images/CGDICON.png' %}" type="image/x-icon" rel="shortcut icon">
+            <style>
+                .oportunidade-oportunidades {
+                    height: 500px;
+                    object-fit: cover;
+                }
+            </style>
+        </head>
+
+        <body>
+            <div class="container">
+                <div class="header" style="background-color: #0A72D1; height: 150px;">
+                    <h1 style="text-align: center; color: white;" id="texto">Alterar estado</h1>
+                </div>
+                <div class="main">
+                    <div class="shadow p-4 mb-5 bg-body rounded">
+                    <div class="card">
+                        {% if oportunidade.oportunidades %}
+                        {% endif %}
+                        <div class="card-header">
+                            {{ oportunidade.nome }}
+                        </div>
+                        <div class="card-body">
+                            {% if oportunidade.id_number %}
+                            <b>ID: </b>{{ oportunidade.id_number }}
+                            <br/>
+                            {% else %}
+                            <b>ID: </b>
+                            <br/>
+                            {% endif %}
+                            <b>Departamento: </b>{{ oportunidade.departamento }}
+                            <br/>
+                            <b>Email: </b>{{ oportunidade.email }}
+                            <br/>
+                            <br/>
+                            <b>Descrição:</b></br>{{ oportunidade.desc }}
+                            <br/>
+                            <br/>
+                            <b>Recursos de IT: </b>{{ oportunidade.recursos }}
+                        </div>
+                        <div class="card-footer text-muted">
+                            <form enctype='multipart/form-data' action="" method=POST>
+                                {% csrf_token %}
+                                {{ form.as_p }}
+                                <br/>
+                                <input type="submit" value="Submeter" class="btn btn-primary">
+                                <a href="{% url 'delete_oportunidade' oportunidade.id %}" class="btn btn-danger">Deletar proposta</a>
+                            </div>
+                        </div>
+                    </br>
+                </br>
+                <a href="/Status" class="btn btn-secondary">Voltar</a>
+                </div>
+            </div>
+
+{% endblock %}

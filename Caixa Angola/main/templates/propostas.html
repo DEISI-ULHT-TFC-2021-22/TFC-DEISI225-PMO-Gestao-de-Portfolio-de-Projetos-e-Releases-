@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+    <html>
+
+        <head>
+            <title>Propostas | Caixa Angola</title>
+            <link href="{% static 'main/images/CGDICON.png' %}" type="image/x-icon" rel="shortcut icon">
+            <style>
+                .oportunidade-oportunidades {
+                    height: 500px;
+                    object-fit: cover;
+                }
+            </style>
+        </head>
+
+        <body>
+            <div class="container">
+                <div class="header" style="background-color: #0A72D1; height: 150px;">
+                    <h1 style="text-align: center; color: white;" id="texto">Propostas</h1>
+                </div>
+                <div class="main">
+                    <div class="shadow p-4 mb-5 bg-body rounded">
+                    <form style="text-align: right;" method="POST" action="{% url 'propostas_search' %}">
+                        {% csrf_token %}
+                        <input type="search" name="searcheds" placeholder="ID/Nome">
+                        <button type="submit">Pesquisar</button>
+                      </form>
+                    </br>
+                    {% for oportunidade in oportunidade_list %}
+                        {% if oportunidade.is_approved == "" %}
+                            <div class="card">
+                                {% if oportunidade.oportunidades %}
+                                {% endif %}
+                                <div class="card-header">
+                                    {{ oportunidade.nome }}
+                                </div>
+                                <div class="card-body">
+                                    <b>ID: </b>{{ oportunidade.id_number }}
+                                    <br/>
+                                    <b>Departamento: </b>{{ oportunidade.departamento }}
+                                    <br/>
+                                    <b>Email: </b>{{ oportunidade.email }}
+                                    <br/>
+                                    <br/>
+                                    <a href="{% url 'oportunidade-details' oportunidade.id %}" class="btn btn-primary">Ver mais detalhes</a>
+                                </div>
+                            </div>
+                            </br>
+                        {% endif %}
+                    {% endfor %}
+                    </br>
+                    <a href="indexPMO" class="btn btn-secondary">Voltar</a>
+                </div>
+            </div>
+
+{% endblock %}

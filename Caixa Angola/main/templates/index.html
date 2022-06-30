@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <title>Caixa Angola</title>
+        
+    <style>
+        body {
+        background-image: url({% static 'main/images/mountain.jpg' %});
+        min-height: 800px;
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        }
+        @media only screen and (min-width: 600px) {
+            .logo {
+                width: 50%;
+                height: auto;
+            }}
+        @media only screen and (max-width: 600px) {
+            .logo {
+                width: 100%;
+                height: auto;
+            }
+        }
+    </style>
+    <link href="{% static 'main/estilos.css' %}" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container">
+            <div class="main">
+                <nav>
+                    <img src="{% static 'main/images/caixaAngola.png' %}" class="logo">
+                    <br><br><br><br><br><br><br><br><br><br><br>
+                    <a href="NovasOportunidades" class="button2">Novas Oportunidades</a>
+                    <a href="SubmissionStatus" class="button2">Estado das Submissões</a>
+                
+                    <a href="CaixaSocial" class="button2">Caixa Social</a>
+                    <br>
+                    <a href="{% static 'MDU.pdf' %}" class="button2">Manual do utilizador</a>
+                </nav>
+            </div>
+          </div>
+    </body>
+    </html>
+{% endblock %}

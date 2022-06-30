@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% if user.is_authenticated %}	
+<link href="{% static 'main/estilos.css' %}" rel="stylesheet">	
+<title>Editar evento | Caixa Angola</title>
+<div class="container">
+    <div class="header" style="background-color: #0A72D1;">
+        <h1 style="text-align: center;" id="texto">Editar evento</h1>
+    </div>
+    <div class="main">
+            <div class="shadow p-4 mb-5 bg-body rounded">
+<br/>
+<form enctype='multipart/form-data' action="" method=POST>
+	{% csrf_token %}
+	{{ form.as_p }}
+	<br/>
+    <input type="submit" value="Submeter" class="btn btn-primary">
+    <a href="/EventList" class="btn btn-secondary">Cancelar</a>
+</div>
+{% endif %}
+{% endblock %}

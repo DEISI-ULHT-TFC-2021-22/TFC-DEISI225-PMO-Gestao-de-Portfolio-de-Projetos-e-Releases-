@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <!DOCTYPE html>
+    <html>
+
+        <head>
+            <title>Documentos | Caixa Angola</title>
+            <link href="{% static 'main/images/CGDICON.png' %}" type="image/x-icon" rel="shortcut icon">
+            <style>
+                .document-documents {
+                    height: 500px;
+                    object-fit: cover;
+                }
+            </style>
+        </head>
+
+        <body>
+            <div class="container">
+                <div class="header" style="background-color: #0A72D1; height: 150px;">
+                    <h1 style="text-align: center; color: white;" id="texto">Documentos</h1>
+                </div>
+                <div class="main">
+                    <div class="shadow p-4 mb-5 bg-body rounded">
+                    {% for document in document_list %}
+                    <div class="card">
+                        {% if document.documents %}
+                        {% endif %}
+                        <div class="card-header">
+                            {{ document.name }}
+                        </div>
+                        <div class="card-body">
+                            <a class='document-documents' href="{{ document.documents.url }}">{{ document.documents.url }}</a>
+                        </div>
+                        <div class="card-footer text-muted">
+                            <a href="{% url 'delete_document' document.id %}" class="btn btn-outline-danger">Deletar documento</a>
+                        </div>
+                    </div>
+                    </br>
+                    {% endfor %}
+                    </br>
+                    <a href="indexPMO" class="btn btn-primary">Voltar</a>
+                </div>
+            </div>
+        </body>
+
+    </html>
+{% endblock %}

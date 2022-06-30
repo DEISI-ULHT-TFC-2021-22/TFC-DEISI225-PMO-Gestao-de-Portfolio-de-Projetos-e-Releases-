@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% if user.is_authenticated %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Gestor de Portfólio | Caixa Angola</title> 
+<style>
+    body {
+    min-height: 800px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    }
+    @media only screen and (min-width: 600px) {
+            .logo {
+                width: 50%;
+                height: auto;
+            }}
+        @media only screen and (max-width: 600px) {
+            .logo {
+                width: 100%;
+                height: auto;
+            }
+        }
+</style>
+<link href="{% static 'main/estilos.css' %}" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="main">
+            <nav>
+                <img src="{% static 'main/images/caixaAngola.png' %}" class="logo">
+                <br><br><br><br><br><br><br><br><br><br><br>
+                <a href="DocumentList" class="button2">Documentos</a>
+                <a href="EventList" class="button2">Gestor de Caixa Social</a>
+                <br>
+                <a href="Status" class="button2">Estados</a>
+                <a href="NoteList" class="button2">Notas</a>
+                <a href="Propostas" class="button2">Propostas</a>
+            </nav>
+        
+        </div>
+      </div>
+</body>
+</html>
+{% endif %}
+{% endblock %}

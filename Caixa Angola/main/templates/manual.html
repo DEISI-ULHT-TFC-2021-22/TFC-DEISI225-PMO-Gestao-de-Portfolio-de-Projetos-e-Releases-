@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<title>Manual | Caixa Angola</title>
+<style>
+    #img {
+        width: 50%;
+    }
+</style>
+<link href="{% static 'main/images/CGDICON.png' %}" type="image/x-icon" rel="shortcut icon">
+<link href="{% static 'main/estilos.css' %}" rel="stylesheet">
+<body>
+    <div class="container">
+        <div class="header" style="background-color: #0A72D1;">
+            <h1 style="text-align: center;" id="texto">Manual</h1>
+        </div>
+        <div class="main">
+            <img id='img' src="{% static 'main/images/caixaAngola.png' %}">
+            <h1><a href="{% static 'MDU.pdf' %}">Visualizar</a></h1>
+        </div>
+             <a href="/" class="button2">Voltar</a>
+{% endblock %}
